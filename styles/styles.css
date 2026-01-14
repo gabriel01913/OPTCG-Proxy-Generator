@@ -1,0 +1,143 @@
+body{
+    background-color: #5ba3f0;
+}
+
+.page-wrapper {
+    /* Total width of (300 + 180 + 794) + gaps */
+    width: 1350px; 
+    max-width: 95vw; /* Prevents it from being wider than the screen */
+    margin: 0 auto;  /* Centers the entire app on the screen */
+}
+
+.header-container {
+    display: flex;
+    justify-content: center; /* Centers the image horizontally */
+    align-items: center;
+    height: 120px; /* Fixed height: adjust this to your liking */
+    width: 100%;
+    /*background-color: #ffffff; /* Matches your previous header style */
+    /*box-shadow: 0 2px 5px rgba(0,0,0,0.1);*/
+    margin-bottom: 20px;
+    overflow: hidden; /* Prevents large images from spilling out */
+}
+
+.header-logo {
+    max-height: 100px;
+    max-width: 100%; /* Ensures it never spills out of the header area */
+    object-fit: contain; /* Ensures the logo isn't stretched */
+}
+
+.main-layout {
+    display: flex;
+    gap: 20px;
+    padding: 0px;
+    align-items: flex-start; /* Keeps controls at the top */
+}
+
+.instructions-side {
+    flex: 0 0 180px; /* Fixed width for the instructions column */
+    background-color: #fceea2;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #333;
+    border-left: 3px solid #007bff;
+    position: sticky; /* Keeps it visible while scrolling */
+    top: 20px;
+    width: 180px;
+}
+
+.instructions-side h3 {
+    margin-top: 0;
+    font-size: 16px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.instructions-side code {
+    background: #d3d3d3;
+    padding: 2px 4px;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+.instructions-side .note {
+    font-style: italic;
+    color: #666;
+    margin-top: 20px;
+}
+
+.controls-side {
+    flex: 0 0 300px; /* Fixed width for the left side */
+    position: sticky; /* Keeps controls visible while scrolling the preview */
+    top: 20px;
+}
+
+.preview-side {
+    flex: 0 1 auto; /* Takes up the remaining space */
+    overflow-x: auto; /* Adds a scrollbar if the "A4" is too wide */
+}
+
+/* styles.css */
+.settings {
+    background: #f9f9f9; /* */
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column; /* This stacks them vertically */
+    gap: 10px; /* Space between each row */
+    width: fit-content;
+    font-family: sans-serif;
+    border: 1px solid #ddd;
+}
+
+.settings label {
+    display: flex;
+    justify-content: space-between; /* Aligns text left and input right */
+    align-items: center;
+    gap: 15px;
+    font-weight: bold;
+}
+
+.settings input {
+    width: 50px;
+    padding: 3px;
+    text-align: center;
+}
+
+.cardPreview {
+    width: 63mm; /* Fixed width to match the grid */
+    height: 88mm; /* Standard card height */
+    object-fit: contain;
+}
+
+#container_preview {
+    display: grid;
+    /* This tells the grid: "Fit as many 63mm columns as you can, then wrap" */
+    grid-template-columns: repeat(auto-fill, 63mm);
+    width: 210mm; /* Fixed A4 width */
+    min-height: 297mm;
+    background-color: rgb(158, 158, 158);
+    border: 1px solid #000000;
+    box-sizing: border-box; /* Crucial: includes padding in the 210mm width */
+    margin: 0 auto;
+}
+
+#container_preview hr {
+    grid-column: 1 / -1; /* Tells the line to span from the first to the last available column */
+    width: 100%;
+    border: 1px solid black;
+    margin: 10px 0;
+}
+
+hr {
+    border: 0;
+    border-top: 2px solid black; /* Adjust thickness here */
+    width: 100%;
+    margin: 20px 0; /* Adds space above and below the line */
+}
