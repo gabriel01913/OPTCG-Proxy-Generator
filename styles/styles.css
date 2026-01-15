@@ -85,12 +85,12 @@ body{
 /* styles.css */
 .settings {
     background: #f9f9f9; /* */
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
     display: flex;
     flex-direction: column; /* This stacks them vertically */
-    gap: 10px; /* Space between each row */
+    gap: 5px; /* Space between each row */
     width: fit-content;
     font-family: sans-serif;
     border: 1px solid #ddd;
@@ -100,12 +100,12 @@ body{
     display: flex;
     justify-content: space-between; /* Aligns text left and input right */
     align-items: center;
-    gap: 15px;
+    gap: 0px;
     font-weight: bold;
 }
 
 .settings input {
-    width: 50px;
+    width: 30px;
     padding: 3px;
     text-align: center;
 }
