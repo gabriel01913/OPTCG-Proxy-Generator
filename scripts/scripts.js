@@ -170,7 +170,7 @@ async function Download() {
     doc.setLineWidth(0.1);
 
     for (let i = 0; i < images.length; i++) {
-        const imgData = await getBase64Image(images[i]);
+        const imgData = await getBase64Image(images[i].src);
 
         // Check if we need to wrap to the next line (Right Padding)
         if (x + cardWidth > (210 - paddingRight)) {
