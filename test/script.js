@@ -40,19 +40,16 @@ let showGrid = false;
 function toggleGridView() {
     showGrid = !showGrid;
 
-    // 1. Remove existing lines if they exist
     const existingLines = document.querySelectorAll('.guide-line');
     existingLines.forEach(line => line.remove());
 
     if (!showGrid) return;
 
-    // 2. Create the Lines
     for (let i = 1; i < GRID_DIVISION; i++) {
-        const position = (100 / GRID_DIVISION) * i;
+        // Each line is placed at exactly 'i' viewport width units
+        const position = i; 
 
-        // Create Vertical Line
         createLine('v', position);
-        // Create Horizontal Line
         createLine('h', position);
     }
 }
@@ -62,9 +59,11 @@ function createLine(type, position) {
     line.className = `guide-line guide-${type}`;
     
     if (type === 'v') {
-        line.style.left = `${position}%`;
+        // Vertical lines move across the width in 1vw increments
+        line.style.left = `${position}vw`;
     } else {
-        line.style.top = `${position}%`;
+        // Horizontal lines move down in 1vw increments (matching the square cells)
+        line.style.top = `${position}vw`;
     }
     
     document.body.appendChild(line);
