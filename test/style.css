@@ -1,0 +1,53 @@
+:root {
+    --grid-div: 100;
+    --base-div: 100;
+}
+
+body{
+    display: grid;
+    grid-template-columns: repeat(var(--grid-div), 1fr);
+    grid-template-rows: repeat(var(--grid-div), 1fr);
+    align-items: start;
+    margin: 0 auto;
+    margin: 0;
+    height: 100vh;
+}
+
+.guide-line {
+    position: fixed;
+    background: rgb(255, 0, 0);
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.guide-v {
+    width: 1px;
+    height: 100vh;
+    top: 0;
+}
+
+.guide-h {
+    height: 1px;
+    width: 100vw;
+    left: 0;
+}
+
+.container{
+    --x: 10;
+    --y:20;
+    --width: 20;
+    --height: 20;
+    --bg-color: rgb(0, 255, 42);
+}
+
+.child1{
+    --width: 50;
+    --height: 100;
+    --bg-color: blue;
+}
+
+.child2{
+    --width: 50;
+    --height: 100;
+    --bg-color: green;
+}

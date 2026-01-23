@@ -1,5 +1,9 @@
+import './components/index.js'
+
 /**@type button */
 //Change this for website
+
+
 const ROOT = 'https://en.onepiece-cardgame.com/images/cardlist/card'
 
 const PREVIEWBUTTON = document.getElementById("bt_preview")
@@ -202,3 +206,47 @@ async function Download() {
 
     doc.save("proxies_grid.pdf");
 }
+
+
+let guideLevel = 0; // 0 = off, 1 = center, 2 = quarters, etc.
+
+function toggleGuides() {
+    // Clear existing guides first
+    const existing = document.querySelectorAll('.guide-line');
+    existing.forEach(el => el.remove());
+
+    // Cycle through levels: 0 -> 1 -> 2 -> 4 -> 8 -> 16 -> 32 -> 64 -> then back to 0
+    if (guideLevel === 0) guideLevel = 1;
+    else if (guideLevel >= 64) guideLevel = 0;
+    else guideLevel *= 2;
+
+    if (guideLevel === 0) return;
+
+    // Create Vertical Lines
+    for (let i = 1; i <= guideLevel; i++) {
+        createLine('v', (100 / (guideLevel + 1)) * i);
+        createLine('h', (100 / (guideLevel + 1)) * i);
+    }
+}
+
+function createLine(type, position) {
+    const line = document.createElement('div');
+    line.className = `guide-line guide-${type}`;
+    
+    // We use document.documentElement.scrollHeight to make sure 
+    // the vertical lines cover the whole page if it's longer than the screen
+    if (type === 'v') {
+        line.style.left = `${position}%`;
+        line.style.height = `${document.documentElement.scrollHeight}px`;
+    } else {
+        // For horizontal lines, we calculate the position based on scrollHeight
+        const totalHeight = document.documentElement.scrollHeight;
+        line.style.top = `${(totalHeight / (guideLevel + 1)) * (position / (100 / (guideLevel + 1)))}px`;
+    }
+    document.body.appendChild(line);
+}
+
+// Shortcut: Press 'G'
+window.addEventListener('keydown', (e) => {
+    if (e.key.toLowerCase() === 'g') toggleGuides();
+});
