@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="ProxyGenerator" content="width=device-width, initial-scale=1.0">
+    <title>ProxyGenerator</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/utility.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body> 
+    <div class="page-wrapper">
+        <div class="header-container">
+            <img src="res/logo.png" alt="One Piece TCG Proxy Generator" class="header-logo">
+        </div>
+
+        <div class="main-layout">
+            <div class="controls-side">
+                <textarea class="roundBox" id="txarea_input" rows="16" cols="40">1xOP01-001
+1xOP01-001#1</textarea>
+                <div class="instructions-side">
+                    <h3>Instructions</h3>
+                    <p><strong>Pattern:</strong><br>1xOP01-001</p>
+                    <p><code>[Quantity]x[SET]-[Number]</code></p>
+                    
+                    <p><strong>Alt Arts:</strong><br>Add <code>#[Number]</code> at the end:</p>
+                    <p><code>1xOP01-001#1</code></p>
+                    
+                    <p class="note">Use the preview to check if it is the correct art before downloading the PDF.</p>
+                </div>
+            </div>
+            
+            <div class="preview-side">
+                <div id="container_preview"></div>
+            </div>
+
+            <div id="settingsSide" class="roundBox">
+                <div class="settings">
+                    <div>
+                        <strong>PDF Margins (mm)</strong>
+                        <label>Top: <input type="number" id="pad_top" value="10"></label>
+                        <label>Bottom: <input type="number" id="pad_bot" value="10"></label>
+                        <label>Left: <input type="number" id="pad_left" value="10"></label>
+                        <label>Right: <input type="number" id="pad_right" value="10"></label>
+                    </div>
+                    <div>
+                        <strong>Card Gaps (mm)</strong>
+                        <label>Gap X: <input type="number" id="gap_x" value="0"></label>
+                        <label>Gap Y: <input type="number" id="gap_y" value="0"></label>
+                        <label>
+                            <input type="checkbox" id="chk_official"> Use Official Site
+                        </label>
+                    </div>
+                </div>
+                <div id="buttons">
+                    <button class="buttons" id="bt_preview">Preview</button>
+                    <button class="buttons" id="bt_download" disabled>Download</button>
+                </div>
+            </div>
+        </div> 
+    </div>
+    <script type ="module" src="scripts/scripts.js"></script>
+</body>
+</html>

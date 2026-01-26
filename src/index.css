@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))]
+    from-[#65baf0]
+    via-[#0E6DA1]
+    to-[#05283B]
+    min-h-screen; /* Dark blue background from your screenshot */
+  }
+}
