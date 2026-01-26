@@ -1,1 +1,5 @@
+export {default as InputArea} from './InputArea'
 export {default as LogoArea} from './LogoArea'
+export {default as PreviewArea} from './PreviewArea'
+export {default as SettingsArea} from './SettingsArea'
+export {default as Card} from './Card'

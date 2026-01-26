@@ -11,3 +11,9 @@
     min-h-screen; /* Dark blue background from your screenshot */
   }
 }
+
+@layer base {
+  code {
+    @apply bg-slate-400 px-1 rounded font-mono font-bold;
+  }
+}
