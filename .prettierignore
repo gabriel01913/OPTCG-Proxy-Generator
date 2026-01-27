@@ -1,0 +1,7 @@
+node_modules
+dist
+public
+*.png
+*.jpg
+Old
+src/assets
