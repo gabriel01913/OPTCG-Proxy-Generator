@@ -1,11 +1,12 @@
 function InputArea() {
   return (
-    <div className="h-full w-full items-stretch justify-center gap-4 bg-red-600 md:w-[25%]">
-      <textarea className="w-[80%] resize-none rounded bg-[#FFFAFA80]">
-        teste
-      </textarea>
-      <div className="w-[80%] rounded-lg border-l-[3px] bg-[#FFFAFA80] p-8 font-sans text-[13px] leading-relaxed text-[#333]">
-        <h3>Instructions</h3>
+    <div className="flex h-full w-full flex-col items-center justify-center gap-y-4 bg-red-600 md:w-[25%]">
+      <textarea
+        className="aspect-square h-auto min-h-60 w-[80%] resize-none rounded bg-[#FFFAFA80] p-4 font-mono leading-tight"
+        defaultValue={'Insert the deck list here'}
+      ></textarea>
+      <div className="w-[80%] rounded-lg bg-[#FFFAFA80] p-8 font-sans text-[13px] leading-relaxed text-[#333]">
+        <h3 className="text-lg font-extrabold">Instructions</h3>
         <p>
           <strong>Pattern:</strong>
           <br />

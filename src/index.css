@@ -4,16 +4,12 @@
 
 @layer base {
   body {
-    @apply bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))]
-    from-[#65baf0]
-    via-[#0E6DA1]
-    to-[#05283B]
-    min-h-screen; /* Dark blue background from your screenshot */
+    @apply min-h-screen bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#65baf0] via-[#0E6DA1] to-[#05283B];
   }
 }
 
 @layer base {
   code {
-    @apply bg-slate-400 px-1 rounded font-mono font-bold;
+    @apply rounded bg-slate-400 px-1 font-mono font-bold;
   }
 }

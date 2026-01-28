@@ -1,9 +1,9 @@
-function Inputs({ type, defaultValue }) {
+function Inputs({ type, defaultValue, visible = true }) {
   return (
     <input
       type={type}
       defaultValue={defaultValue}
-      className="w-20 text-center"
+      className="w-[60%] h-full text-center text-[15px] border border-black rounded-sm font-bold"
     />
   )
 }
