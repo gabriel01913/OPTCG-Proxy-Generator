@@ -1,10 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
 @layer base {
   body {
-    @apply min-h-screen bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#65baf0] via-[#0E6DA1] to-[#05283B];
+    @apply min-h-screen bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#65baf0] via-[#0E6DA1] to-[#05283B];   
   }
 }
 
@@ -12,4 +13,8 @@
   code {
     @apply rounded bg-slate-400 px-1 font-mono font-bold;
   }
+}
+
+body{
+  font-family: 'Inter', sans-serif;
 }
