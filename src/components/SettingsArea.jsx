@@ -31,7 +31,7 @@ function SettingsArea() {
           </div>
         </div>
         <div className={`${SETTINGS_COLUM}`}>
-          <label className='text-[17px] -ml-[50px] font-bold'>Card Gaps (mm)</label>
+          <label className='text-[1rem] -ml-[50px] font-bold'>Card Gaps (mm)</label>
           <div className="grid grid-cols-[auto_1fr] gap-x-8 md:gap-x-2">
             <div className="grid grid-rows-2 gap-2">
               <label className='uppercase font-bold'>Gap X: </label>
