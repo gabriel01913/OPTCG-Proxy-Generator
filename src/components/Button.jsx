@@ -8,8 +8,8 @@ function Button({ text, icon, onClick, className = "" }) {
       hover:bg-[#f58632]
       border-2 border-[#00000069] shadow-md shadow-[#00000069] ${className}`}
     >
-      <img src={icon} className="h-auto w-[1em] aspect-square object-contain" alt=""/>
-      <span className="text-center">{text}</span>
+      <img src={icon} className="h-auto w-[1em] md:[2em] aspect-square object-contain" alt=""/>
+      <span className="text-center text-[1em] md:[2em]">{text}</span>
     </button>
   )
 }

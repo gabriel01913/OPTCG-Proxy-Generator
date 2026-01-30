@@ -6,17 +6,16 @@ function click() {
   console.debug('click')
 }
 
-const SETTINGS_COLUM = "flex h-fit w-full flex-col items-center gap-y-2"
+const SETTINGS_COLUM = "flex h-fit w-full flex-col items-center gap-y-2 lg:text-[0.8em]"
 const SETTIGS_SPACE = "flex flex-col gap-y-3"
-const INPUT_STYLE = "w-[10em] h-auto md:w-[4em]"
-const BUTTON_STYLE = "w-full h-auto"
+const INPUT_STYLE = "w-[8em] h-auto md:w-[4em] lg:w-[3em]"
+const BUTTON_STYLE = "w-full h-auto md:text-[0.7em] lg:text-[0.8em]"
 
 function SettingsArea() {
   return (
     <div className="flex h-auto w-full flex-col justify-between 
-    gap-4 bg-[#FFFAFA80] border-2 border-[#767676] rounded-lg shadow-lg shadow-[#000000a8] p-4 text-[1.5rem]
-    md:text-[0.8em]">
-      <div className="flex flex-col gap-y-2 md:flex-row">
+    gap-4 bg-[#FFFAFA80] border-2 border-[#767676] rounded-lg shadow-lg shadow-[#000000a8] p-4">
+      <div className="flex flex-col gap-y-2 lg:flex-row">
         <div className={`${SETTINGS_COLUM}`}>
           <label className='font-bold'>PDF Margins (mm)</label>
           <div className="flex flex-row gap-x-4">
@@ -48,7 +47,7 @@ function SettingsArea() {
           </div>
         </div>
       </div>
-      <div className="grid w-full grid-rows-2 gap-2 mt-auto md:grid-rows-none md:grid-cols-2">
+      <div className="grid w-full grid-rows-2 gap-2 mt-auto lg:grid-rows-none lg:grid-cols-2">
         <Button className={BUTTON_STYLE} text="Preview" icon={lupaIcon} onClick={click} />
         <Button className={BUTTON_STYLE} text="Download" icon={downloadIcon} onClick={click} />
       </div>          
