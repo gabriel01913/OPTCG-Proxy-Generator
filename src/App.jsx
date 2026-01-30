@@ -4,6 +4,8 @@ import {useState} from 'react'
 
 function App() {
   const [cards, setCards] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] =  useState(1);
   const [deckList, setDeckList] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -13,6 +15,9 @@ function App() {
     setIsLoading(true);
     try{
       let cardlist = await parserDeck(deckList)
+      let pages = Math.ceil(cardlist.length / 9);
+      setTotalPages(Math.max(1, pages))
+      setCurrentPage(1)
       setCards(cardlist)
       console.debug(cards)
     }catch(error){
@@ -24,6 +29,16 @@ function App() {
 
   const onInputChange = (text) => {
     setDeckList(text)
+  }
+
+  const onPreviousPage = () =>{
+    if(currentPage == 1) return
+    setCurrentPage(currentPage - 1)
+  }
+
+  const onNextPage = () =>{
+    if(currentPage == totalPages) return
+    setCurrentPage(currentPage + 1)
   }
 
   return (
@@ -38,7 +53,8 @@ function App() {
             <InputArea onTextChange={onInputChange}/>
           </div>
           <div className='h-auto w-full aspect-[210/297] lg:w-[40%] lg:max-w-xl'>
-            <PreviewArea cardlist={cards}/>
+            <PreviewArea cardlist={cards} 
+              currentPage={currentPage} totalPages={totalPages} onPreviousPage={onPreviousPage} onNextPage={onNextPage}/>
           </div>
           <div className='h-auto w-full aspect-[349/242] lg:w-[17rem]'>
             <SettingsArea onPreviewClick={onPreview} isLoading={isLoading}/>
