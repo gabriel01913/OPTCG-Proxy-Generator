@@ -1,9 +1,10 @@
-function InputArea() {
+function InputArea({onTextChange}) {
   return (
     <div className="h-full w-full items-start justify-center">
       <textarea
         className="h-auto min-h-[18em] lg:min-h-[13em] w-full resize-none rounded bg-[#FFFAFA80] p-4 font-mono leading-tight"
         defaultValue={'Insert the deck list here'}
+        onChange={(e)=>onTextChange(e.target.value)}
       ></textarea>
       <div className="h-auto w-full rounded-lg bg-[#FFFAFA80] p-8 font-sans leading-relaxed text-[#333] lg:text-[0.8em]">
         <h3 className="font-extrabold">Instructions</h3>

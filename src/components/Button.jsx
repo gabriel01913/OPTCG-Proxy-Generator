@@ -1,7 +1,8 @@
-function Button({ text, icon, onClick, className = "" }) {
+function Button({ text, icon, onClick, disabled = false, className = "" }) {
   return (
     <button
       onClick={onClick}
+      disabled = {disabled}
       className={`flex flex-row items-center justify-center uppercase
       gap-3 rounded-[5px] bg-[#B56526] p-2 
       font-bold text-white transition-opacity 
