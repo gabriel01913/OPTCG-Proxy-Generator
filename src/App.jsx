@@ -10,7 +10,7 @@ function App() {
         <br />
         <div className="w-full h-auto flex flex-col items-start justify-center lg:flex-row gap-2 p-4 lg:gap-8">
           <div className='h-auto w-full lg:w-[18rem]'>
-            <InputArea />
+            <InputArea/>
           </div>
           <div className='h-auto w-full aspect-[210/297] lg:w-[40%] lg:max-w-xl'>
             <PreviewArea />
