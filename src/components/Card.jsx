@@ -1,4 +1,4 @@
-import card from '../assets/proxy.png'
+import card from '../assets/proxy.png?preset=optimized'
 
 function Card({imageUrl}) {
   if(!imageUrl) imageUrl = card
