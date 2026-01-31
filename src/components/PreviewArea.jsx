@@ -9,8 +9,6 @@ function PreviewArea({cardlist = [], currentPage, totalPages, onNextPage, onPrev
     return cardlist[startIndex + index] || null;
   });
 
-  console.log(displayCards)
-
   const BUTTON_STYLE = "text-[0.8em]"
 
   return (
