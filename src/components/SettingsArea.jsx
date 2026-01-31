@@ -7,7 +7,7 @@ const SETTIGS_SPACE = "flex flex-col gap-y-3"
 const INPUT_STYLE = "w-[8em] h-auto md:w-[4em] lg:w-[3em]"
 const BUTTON_STYLE = "w-full h-auto md:text-[0.7em] lg:text-[0.8em]"
 
-function SettingsArea({onPreviewClick, onDownloadClick, isLoading}) {
+function SettingsArea({onPreviewClick, onDownloadClick, onSettingsChange, isLoading}) {
   return (
     <div className="flex h-auto w-full flex-col justify-between 
     gap-4 bg-[#FFFAFA80] border-2 border-[#767676] rounded-lg shadow-lg shadow-[#000000a8] p-4">
@@ -22,10 +22,10 @@ function SettingsArea({onPreviewClick, onDownloadClick, isLoading}) {
               <label className='uppercase font-bold'>Right: </label>
             </div>
             <div className={`${SETTIGS_SPACE}`}>
-              <Inputs type="number" defaultValue={10} className={INPUT_STYLE}/>
-              <Inputs type="number" defaultValue={10} className={INPUT_STYLE}/>
-              <Inputs type="number" defaultValue={10} className={INPUT_STYLE}/>
-              <Inputs type="number" defaultValue={10} className={INPUT_STYLE}/>
+              <Inputs type="number" defaultValue={0} className={INPUT_STYLE} prop="top" onChange={onSettingsChange}/>
+              <Inputs type="number" defaultValue={0} className={INPUT_STYLE} prop="bottom" onChange={onSettingsChange}/>
+              <Inputs type="number" defaultValue={0} className={INPUT_STYLE} prop="left" onChange={onSettingsChange}/>
+              <Inputs type="number" defaultValue={0} className={INPUT_STYLE} prop="right" onChange={onSettingsChange}/>
             </div>
           </div>
         </div>
@@ -37,8 +37,8 @@ function SettingsArea({onPreviewClick, onDownloadClick, isLoading}) {
               <label className='uppercase font-bold'>Gap Y: </label>
             </div>
             <div className="grid grid-rows-2 gap-2">
-              <Inputs type="number" defaultValue={0} className={INPUT_STYLE}/>
-              <Inputs type="number" defaultValue={0} className={INPUT_STYLE}/>
+              <Inputs type="number" defaultValue={0} className={INPUT_STYLE} prop="gapX" onChange={onSettingsChange}/>
+              <Inputs type="number" defaultValue={0} className={INPUT_STYLE} prop="gapY" onChange={onSettingsChange}/>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
+import {useState} from 'react'
 import { LogoArea, InputArea, PreviewArea, SettingsArea } from './components'
 import {parserDeck} from './services/parserDeck'
-import {useState} from 'react'
+import { generatePDF } from './services/generatePDF';
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -8,6 +9,9 @@ function App() {
   const [totalPages, setTotalPages] =  useState(1);
   const [deckList, setDeckList] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [configSettings, setConfig] = useState({
+    top:"0", bottom:"0", left:"0", right:"0", gapX:"0", gapY:"0"
+  });
 
   const onPreview = async() =>{
     console.log("deck list " + deckList)
@@ -41,6 +45,24 @@ function App() {
     setCurrentPage(currentPage + 1)
   }
 
+  const onSettingsChange = (prop, value) =>{
+    setConfig(prev => ({
+      ...prev,
+      [prop]: parseFloat(value) || 0
+    }));
+  }
+
+  const onDownload = async () =>{
+    setIsLoading(true);
+    try{
+      await generatePDF(cards, configSettings)
+    }catch(e){
+      console.debug(e)
+    }finally{
+      setIsLoading(false);
+    }
+  }
+
   return (
     <>
       <div className="flex w-full flex-col items-center justify-center font-inter text-[1rem] md:text-[2rem] lg:text-[1rem]">
@@ -57,7 +79,7 @@ function App() {
               currentPage={currentPage} totalPages={totalPages} onPreviousPage={onPreviousPage} onNextPage={onNextPage}/>
           </div>
           <div className='h-auto w-full aspect-[349/242] lg:w-[17rem]'>
-            <SettingsArea onPreviewClick={onPreview} isLoading={isLoading}/>
+            <SettingsArea onPreviewClick={onPreview} onDownloadClick={onDownload} onSettingsChange={onSettingsChange} isLoading={isLoading}/>
           </div>
         </div>
       </div>
