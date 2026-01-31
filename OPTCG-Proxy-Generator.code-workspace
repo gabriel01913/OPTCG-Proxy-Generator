@@ -8,4 +8,14 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": null,
   },
+  "launch": {
+    "configurations": [
+      {
+        "type": "msedge",
+        "name": "http://localhost:5173/OPTCG-Proxy-Generator/",
+        "request": "launch",
+        "url": "http://localhost:5173/OPTCG-Proxy-Generator/"
+      }
+    ]
+  },
 }

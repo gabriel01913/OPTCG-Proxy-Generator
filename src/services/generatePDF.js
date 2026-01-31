@@ -20,53 +20,54 @@ function getBase64Image(imgUrl) {
 }
 
 export async function generatePDF(urlList, configs) {
+    console.debug(configs)
     const doc = new jsPDF();
     
-    // Grid settings
     const cardWidth = 63;  
     const cardHeight = 88; 
-    const paddingTop = configs.top || 0;
-    const paddingLeft = configs.left || 0;
-    const paddingRight = configs.right || 0;
-    const paddingBottom = configs.bottom || 0;
+    const pageWidth = 210;
+    const pageHeight = 297;
 
-    const gapX = configs.gapX || 0;
-    const gapY = configs.gapY || 0;
+    const top = parseFloat(configs.top) || 0;
+    const bottom = parseFloat(configs.bottom) || 0;
+    const left = parseFloat(configs.left) || 0; 
+    const right = parseFloat(configs.right) || 0;
+    const gapX = parseFloat(configs.gapX) || 0;
+    const gapY = parseFloat(configs.gapY) || 0;
 
-    let x = paddingLeft; 
-    let y = paddingTop;
-
-    doc.setDrawColor(180); // Light gray so it's not too bold
-    doc.setLineWidth(0.1);
+    let x = left; 
+    let y = top;
 
     for (let i = 0; i < urlList.length; i++) {
         const imgData = await getBase64Image(urlList[i]);
 
-        // Check if we need to wrap to the next line (Right Padding)
-        if (x + cardWidth > (210 - paddingRight)) {
-            x = paddingLeft;
-            y += cardHeight + gapY;
+        // 1. VERIFICAÇÃO DE QUEBRA DE LINHA (Horizontal)
+        // Se a carta atual + largura não couber na linha considerando o padding da direita
+        if (x + cardWidth > (pageWidth - right)) {
+            x = left; // Volta para o início da linha
+            y += cardHeight + gapY; // Pula para a próxima linha
         }
 
-        // Check if we need a new page (Bottom Padding)
-        if (y + cardHeight > (297 - paddingBottom)) {
+        // 2. VERIFICAÇÃO DE QUEBRA DE PÁGINA (Vertical)
+        // Se a nova linha ultrapassar o limite do padding inferior
+        if (y + cardHeight > (pageHeight - bottom)) {
             doc.addPage();
-            x = paddingLeft;
-            y = paddingTop;
+            x = left;
+            y = top;
         }
 
-        // 1. Add the Card
+        // 3. DESENHA A CARTA
         doc.addImage(imgData, 'PNG', x, y, cardWidth, cardHeight);
 
-        // 2. Draw Cutting Guides (The "Connective" Lines)
-        // Horizontal lines (Top and Bottom of this specific card)
-        doc.line(x - 5, y, x + cardWidth + 5, y); 
-        doc.line(x - 5, y + cardHeight, x + cardWidth + 5, y + cardHeight);
+        // 4. DESENHA GUIAS DE CORTE
+        doc.setDrawColor(180);
+        doc.setLineWidth(0.1);
+        doc.line(x - 2, y, x + cardWidth + 2, y); // Horizontal Topo
+        doc.line(x - 2, y + cardHeight, x + cardWidth + 2, y + cardHeight); // Horizontal Base
+        doc.line(x, y - 2, x, y + cardHeight + 2); // Vertical Esquerda
+        doc.line(x + cardWidth, y - 2, x + cardWidth, y + cardHeight + 2); // Vertical Direita
 
-        // Vertical lines (Left and Right of this specific card)
-        doc.line(x, y - 5, x, y + cardHeight + 5);
-        doc.line(x + cardWidth, y - 5, x + cardWidth, y + cardHeight + 5);
-
+        // 5. PREPARA A PRÓXIMA POSIÇÃO
         x += cardWidth + gapX;
     }
 

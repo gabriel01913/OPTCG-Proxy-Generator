@@ -22,10 +22,10 @@ function SettingsArea({onPreviewClick, onDownloadClick, onSettingsChange, isLoad
               <label className='uppercase font-bold'>Right: </label>
             </div>
             <div className={`${SETTIGS_SPACE}`}>
-              <Inputs type="number" defaultValue={0} className={INPUT_STYLE} prop="top" onChange={onSettingsChange}/>
-              <Inputs type="number" defaultValue={0} className={INPUT_STYLE} prop="bottom" onChange={onSettingsChange}/>
-              <Inputs type="number" defaultValue={0} className={INPUT_STYLE} prop="left" onChange={onSettingsChange}/>
-              <Inputs type="number" defaultValue={0} className={INPUT_STYLE} prop="right" onChange={onSettingsChange}/>
+              <Inputs type="number" defaultValue={10} className={INPUT_STYLE} prop="top" onChange={onSettingsChange}/>
+              <Inputs type="number" defaultValue={10} className={INPUT_STYLE} prop="bottom" onChange={onSettingsChange}/>
+              <Inputs type="number" defaultValue={10} className={INPUT_STYLE} prop="left" onChange={onSettingsChange}/>
+              <Inputs type="number" defaultValue={10} className={INPUT_STYLE} prop="right" onChange={onSettingsChange}/>
             </div>
           </div>
         </div>

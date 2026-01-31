@@ -10,7 +10,7 @@ function App() {
   const [deckList, setDeckList] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [configSettings, setConfig] = useState({
-    top:"0", bottom:"0", left:"0", right:"0", gapX:"0", gapY:"0"
+    top:"10", bottom:"10", left:"10", right:"10", gapX:"0", gapY:"0"
   });
 
   const onPreview = async() =>{
