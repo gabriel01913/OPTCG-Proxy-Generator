@@ -32,27 +32,39 @@ export async function parserDeck(textAreaValue) {
         altNumber = altNumber ? altNumber.trim() : "";
 
         let foundUrl = "";
-        let primaryBase = `${OFFICIAL_ROOT}${productCode}${altNumber ? `_p${altNumber}` : ""}`;
-        for (let ext of extensions) {
-            if (await imageExists(primaryBase + ext)) {
-                foundUrl = getProxyUrl(primaryBase + ext);
-                break;
+
+        // Lista de tentativas de sufixos em ordem de prioridade
+        // 1. O número específico após o # (ex: _p1)
+        // 2. Tentar como 'Parallel' se houver altNumber (_p)
+        // 3. Tentar como 'Rare' se houver altNumber (_r)
+        // 4. A versão normal (sem sufixo)
+        const suffixAttempts = [];
+        if (altNumber) {
+            suffixAttempts.push(`_p${altNumber}`);
+            suffixAttempts.push(`_r${altNumber}`);
+        }
+        suffixAttempts.push(""); // Versão normal sem sufixo
+
+        // Loop de busca
+        searchLoop: 
+        for (let suffix of suffixAttempts) {
+            let currentBase = `${OFFICIAL_ROOT}${productCode}${suffix}`;
+            
+            for (let ext of extensions) {
+                const fullUrl = currentBase + ext;
+                if (await imageExists(fullUrl)) {
+                    foundUrl = getProxyUrl(fullUrl);
+                    break searchLoop; // Encontrou? Para todos os loops desta linha
+                }
             }
         }
 
-        if (!foundUrl) {
-            let fallback = altNumber ? `${OFFICIAL_ROOT}${productCode}_r${altNumber}.png` : `${OFFICIAL_ROOT}${productCode}_p1.png`;
-            if (await imageExists(fallback)) foundUrl = getProxyUrl(fallback);
-        }
-
+        // Se encontrou a URL, adiciona a quantidade ao cardList
         if (foundUrl) {
             for (let i = 0; i < quantity; i++) {
-                console.log("Found url " + foundUrl)
                 cardList.push(foundUrl);
             }
         }
     }
-    console.log("card list")
-    console.log(cardList)
     return cardList;
 }
