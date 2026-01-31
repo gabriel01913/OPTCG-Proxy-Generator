@@ -1,4 +1,4 @@
-import logo from '../assets/logo.png?format=webp'
+import logo from '../assets/logo.png?preset=optimized'
 
 function LogoArea() {
   return (
