@@ -65,7 +65,7 @@ function App() {
 
   return (
     <>
-      <div className="flex w-full flex-col items-center justify-center font-inter text-[1rem] md:text-[2rem] lg:text-[1rem] bg-gray-800">
+      <div className="flex w-full flex-col items-center justify-center font-inter text-[1rem] md:text-[2rem] lg:text-[1rem]">
         <div className='w-full h-auto flex items-center justify-center'>
           <LogoArea/>
         </div>
